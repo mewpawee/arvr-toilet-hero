@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arRayCastMng: {fileID: 1234472701}
   placementIndicator: {fileID: 317480017}
-  spawningObject: {fileID: 1818861082154570, guid: 5e45c8f884f6d124ea0499aae7fdbec8,
+  spawningObject: {fileID: 5889267320979916260, guid: 318830e16c9af9a449459f9b35ed0179,
     type: 3}
   projectile: {fileID: 2676055538360254484, guid: bfe91df5a262a794babad791e4843686,
     type: 3}

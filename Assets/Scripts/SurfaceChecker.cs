@@ -15,6 +15,7 @@ public class SurfaceChecker : MonoBehaviour
     public GameObject projectile;
     private int limitMonster = 5;
     public static int countMonster = 0;
+    public static int score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +72,7 @@ public class SurfaceChecker : MonoBehaviour
         {
             Vector3 myVector = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), Random.Range(-2, 2));
             Instantiate(monster, placementPose.position + myVector, placementPose.rotation);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(3f);
             countMonster++;
         }
     }

@@ -20,9 +20,9 @@ public class CheckHit : MonoBehaviour
     {
         if (collision.gameObject.tag == "monster")
         {
-            Debug.Log("hit the monster");
             Destroy(collision.gameObject);
             SurfaceChecker.countMonster--;
+            SurfaceChecker.score++;
         }
     }
 }
