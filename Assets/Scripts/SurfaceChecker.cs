@@ -11,15 +11,27 @@ public class SurfaceChecker : MonoBehaviour
     private bool canSpawn = false;
     private Pose placementPose;
     public GameObject placementIndicator;
-    public GameObject spawningObject;
+    public GameObject monster;
     public GameObject projectile;
-    private int limitMonster = 5;
+    public GameObject[] monsters;
+    private int numMonster = 5;
     public static int countMonster = 0;
     public static int score = 0;
+    public static int playerHealth = 100;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        monsters = new GameObject[numMonster];
+        for (int i = 0; i < numMonster; i++) {
+            monsters[i] = Instantiate(monster,new Vector3(0f, 0f, 0f), monster.transform.rotation);
+            monsters[i].SetActive(false);
+            StartCoroutine(LateCall(monsters[i]));
+        }
+    }
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -31,22 +43,13 @@ public class SurfaceChecker : MonoBehaviour
             //player touch the screen, spawn the prefab
             StartCoroutine(ShootBullet());
         }
-        if (canSpawn && countMonster < limitMonster) {
-            StartCoroutine(SpawnMonster(spawningObject));
-        }
     }
 
     private void UpdateTargetIndicator() {
         if (canSpawn)
         {
-            //show the placement indicator
             //update the pos/rotation based on the placementPose
-            placementIndicator.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
-        }
-        else {
-            //hide the placement indicator
-            placementIndicator.SetActive(false);
         }
     }
 
@@ -67,20 +70,26 @@ public class SurfaceChecker : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnMonster(GameObject monster) {
-        while (canSpawn && countMonster < limitMonster)
+    public IEnumerator LateCall(GameObject monster) {
+       while (true)
         {
-            Vector3 myVector = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), Random.Range(-2, 2));
-            Instantiate(monster, placementPose.position + myVector, placementPose.rotation);
-            yield return new WaitForSeconds(3f);
-            countMonster++;
+            if (canSpawn)
+            {
+                yield return new WaitForSeconds(3f);
+                Vector3 myVector = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), Random.Range(-2, 2));
+                monster.transform.SetPositionAndRotation(placementPose.position + myVector, placementPose.rotation);
+                monster.SetActive(true);
+                yield break;
+            }
+            yield return null;
         }
     }
 
     IEnumerator ShootBullet()
     {
         Debug.Log("shoot");
-        GameObject bullet = Instantiate(projectile, Camera.current.transform.position, Quaternion.identity) as GameObject;
+        Vector3 rotation = new Vector3(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+        GameObject bullet = Instantiate(projectile, Camera.current.transform.position, Quaternion.Euler(rotation));
         bullet.GetComponent<Rigidbody>().AddForce(Camera.current.transform.forward * 100);
         yield return new WaitForSeconds(5);
         Destroy(bullet);

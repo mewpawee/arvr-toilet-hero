@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class CheckHit : MonoBehaviour
 {
+    public GameObject scriptManager;
+   
+    private void Awake()
+    {
+        scriptManager = GameObject.Find("Script Manager");
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +26,8 @@ public class CheckHit : MonoBehaviour
     {
         if (collision.gameObject.tag == "monster")
         {
-            Destroy(collision.gameObject);
-            SurfaceChecker.countMonster--;
+            collision.gameObject.SetActive(false);
+            StartCoroutine(scriptManager.GetComponent<SurfaceChecker>().LateCall(collision.gameObject));
             SurfaceChecker.score++;
         }
     }
