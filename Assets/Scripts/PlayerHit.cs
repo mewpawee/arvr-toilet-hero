@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHit : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class PlayerHit : MonoBehaviour
             other.gameObject.SetActive(false);
             StartCoroutine(scriptManager.GetComponent<SurfaceChecker>().LateCall(other.gameObject));
             SurfaceChecker.playerHealth = SurfaceChecker.playerHealth - 10;
+            SceneManager.LoadScene(3);
+            
         }
     }
 }
