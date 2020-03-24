@@ -21,11 +21,12 @@ public class PlayerHit : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "monster") {
-            collision.gameObject.SetActive(false);
-            StartCoroutine(scriptManager.GetComponent<SurfaceChecker>().LateCall(collision.gameObject));
+        if (other.gameObject.tag == "monster")
+        {
+            other.gameObject.SetActive(false);
+            StartCoroutine(scriptManager.GetComponent<SurfaceChecker>().LateCall(other.gameObject));
             SurfaceChecker.playerHealth = SurfaceChecker.playerHealth - 10;
         }
     }

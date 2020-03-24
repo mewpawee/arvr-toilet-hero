@@ -75,13 +75,13 @@ public class SurfaceChecker : MonoBehaviour
         {
             if (canSpawn)
             {
-                yield return new WaitForSeconds(3f);
+                //yield return new WaitForSeconds(3f);
                 Vector3 myVector = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), Random.Range(-2, 2));
                 monster.transform.SetPositionAndRotation(placementPose.position + myVector, placementPose.rotation);
                 monster.SetActive(true);
                 yield break;
             }
-            yield return null;
+            yield return new WaitForSeconds(0.8f);
         }
     }
 
