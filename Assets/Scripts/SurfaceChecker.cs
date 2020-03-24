@@ -18,6 +18,10 @@ public class SurfaceChecker : MonoBehaviour
     public static int countMonster = 0;
     public static int score = 0;
     public static int playerHealth = 100;
+
+    //public Audioclip GunShoot;
+    //public AudioSource audioSource;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -31,7 +35,7 @@ public class SurfaceChecker : MonoBehaviour
 
     void Start()
     {
-
+        //audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -88,6 +92,7 @@ public class SurfaceChecker : MonoBehaviour
     IEnumerator ShootBullet()
     {
         Debug.Log("shoot");
+        //audioSource.PlayOneShot(GunShoot);
         Vector3 rotation = new Vector3(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
         GameObject bullet = Instantiate(projectile, Camera.current.transform.position, Quaternion.Euler(rotation));
         bullet.GetComponent<Rigidbody>().AddForce(Camera.current.transform.forward * 100);
