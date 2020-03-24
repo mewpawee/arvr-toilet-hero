@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckHit : MonoBehaviour
 {
     public GameObject scriptManager;
-   
+    public AudioSource monsterHit;
     private void Awake()
     {
         scriptManager = GameObject.Find("Script Manager");
@@ -26,6 +26,7 @@ public class CheckHit : MonoBehaviour
     {
         if (collision.gameObject.tag == "monster")
         {
+            monsterHit.Play();
             collision.gameObject.SetActive(false);
             StartCoroutine(scriptManager.GetComponent<SurfaceChecker>().LateCall(collision.gameObject));
             SurfaceChecker.score++;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHit : MonoBehaviour
 {
     public GameObject scriptManager;
-
+    public AudioSource playerKilled;
     private void Awake()
     {
         scriptManager = GameObject.Find("Script Manager");
@@ -27,6 +27,7 @@ public class PlayerHit : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             StartCoroutine(scriptManager.GetComponent<SurfaceChecker>().LateCall(other.gameObject));
+            playerKilled.Play();
             SurfaceChecker.playerHealth = SurfaceChecker.playerHealth - 10;
         }
     }

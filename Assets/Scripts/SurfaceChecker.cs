@@ -18,6 +18,7 @@ public class SurfaceChecker : MonoBehaviour
     public static int countMonster = 0;
     public static int score = 0;
     public static int playerHealth = 100;
+    public AudioSource shootSound;
 
     //public Audioclip GunShoot;
     //public AudioSource audioSource;
@@ -73,7 +74,7 @@ public class SurfaceChecker : MonoBehaviour
             placementPose.rotation = Quaternion.LookRotation(cameraBearing);
         }
     }
-
+  
     public IEnumerator LateCall(GameObject monster) {
        while (true)
         {
@@ -91,7 +92,7 @@ public class SurfaceChecker : MonoBehaviour
 
     IEnumerator ShootBullet()
     {
-        Debug.Log("shoot");
+        shootSound.Play();
         //audioSource.PlayOneShot(GunShoot);
         Vector3 rotation = new Vector3(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
         GameObject bullet = Instantiate(projectile, Camera.current.transform.position, Quaternion.Euler(rotation));
