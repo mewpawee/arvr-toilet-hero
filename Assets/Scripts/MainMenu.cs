@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
     {
          public void PlayGame() 
     {
+     UserData.score = 0;
      SceneManager.LoadScene(1);
 
     }

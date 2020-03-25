@@ -23,12 +23,13 @@ public class PlayerHit : MonoBehaviour
         
     }
     private void OnTriggerEnter(Collider other)
-    {
+    {   // Collision between Monster and Player
         if (other.gameObject.tag == "monster")
         {
             other.gameObject.SetActive(false);
             StartCoroutine(scriptManager.GetComponent<SurfaceChecker>().LateCall(other.gameObject));
             SurfaceChecker.playerHealth = SurfaceChecker.playerHealth - 10;
+            UserData.score = 0;
             SceneManager.LoadScene(3);
             
         }

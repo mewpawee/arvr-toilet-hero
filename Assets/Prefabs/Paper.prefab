@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5548170980351531981}
   - component: {fileID: 1682154387169206993}
   - component: {fileID: 217629550254559678}
-  - component: {fileID: 4886851342076497665}
   m_Layer: 0
   m_Name: Paper
   m_TagString: Untagged
@@ -65,6 +64,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptManager: {fileID: 2676055538360254484, guid: bfe91df5a262a794babad791e4843686,
     type: 3}
+  TargetScore: 120
+  YourScore: 0
+  yourScoreText: {fileID: 0}
 --- !u!64 &217629550254559678
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -79,19 +81,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 4eebd70df9352cc41bef22b929c5c9bd, type: 3}
---- !u!114 &4886851342076497665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217629550254559679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bb7501cd2f741f4e8b3bbd8c4080ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptManager: {fileID: 0}
 --- !u!1 &5983426022110262306
 GameObject:
   m_ObjectHideFlags: 0

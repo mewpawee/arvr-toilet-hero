@@ -57,6 +57,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BasicAi.cs" />
      <Compile Include="Assets\Scripts\CheckHit.cs" />
+     <Compile Include="Assets\Scripts\GameCanvas.cs" />
+     <Compile Include="Assets\Scripts\GameData\GameData.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\PlayerHit.cs" />
      <Compile Include="Assets\Scripts\SurfaceChecker.cs" />
