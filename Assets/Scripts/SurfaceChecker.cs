@@ -19,7 +19,8 @@ public class SurfaceChecker : MonoBehaviour
     public static int score = 0;
     public static int playerHealth = 100;
     public AudioSource shootSound;
-
+    public AudioSource appear_warp;
+    public AudioSource appear_fire;
     //public Audioclip GunShoot;
     //public AudioSource audioSource;
 
@@ -84,6 +85,8 @@ public class SurfaceChecker : MonoBehaviour
                 Vector3 myVector = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), Random.Range(-2, 2));
                 monster.transform.SetPositionAndRotation(placementPose.position + myVector, placementPose.rotation);
                 monster.SetActive(true);
+                appear_warp.Play();
+                appear_fire.Play();
                 yield break;
             }
             yield return new WaitForSeconds(0.8f);
